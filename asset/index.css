@@ -1,3 +1,458 @@
-.oxmod-smct-landing{
-/* CSS */
- }
+/**
+ * Created by wurui on 21/05/2017.
+ */
+@font-face {
+  font-family: 'iconfont';
+  /* project id 266910 */
+  src: url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.eot');
+  src: url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.woff') format('woff'), url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.ttf') format('truetype'), url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.svg#iconfont') format('svg');
+}
+@keyframes rolling {
+  0% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateX(-30deg) rotateY(180deg);
+  }
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+@keyframes breath {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes shining {
+  0% {
+    text-shadow: 0px 0px 5px #c8c8c8;
+    color: silver;
+  }
+  50% {
+    text-shadow: 0px 0px 15px #c8c8c8;
+    color: gold;
+  }
+  100% {
+    text-shadow: 0px 0px 5px #c8c8c8;
+    color: silver;
+  }
+}
+.oxmod-smct-landing {
+  /* CSS */
+  text-align: center;
+}
+.oxmod-smct-landing .fullscreen {
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.oxmod-smct-landing .transition {
+  transition: all .5s;
+}
+.oxmod-smct-landing .topmask {
+  opacity: 0;
+  z-index: -1;
+  background-image: -webkit-radial-gradient(#969696, #ffffff);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.oxmod-smct-landing .topmask img {
+  margin-top: 140px;
+  transition: all .3s;
+  position: relative;
+  z-index: 4;
+  border-radius: 5px;
+}
+.oxmod-smct-landing .topmask.fadeout img {
+  transform: scale(0.3);
+}
+.oxmod-smct-landing .fadeout {
+  transition: all .5s;
+  opacity: 0;
+  transition-timing-function: ease-out;
+}
+.oxmod-smct-landing .fadein {
+  transition: all .5s;
+  transition-timing-function: ease-in;
+  opacity: 1;
+  z-index: 3;
+}
+.oxmod-smct-landing .background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url(img/bg.jpg);
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: .4;
+}
+.oxmod-smct-landing .playground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  perspective: 500px;
+}
+.oxmod-smct-landing .logos-bg {
+  position: absolute;
+  width: 100%;
+  margin-top: 150px;
+  height: 150px;
+  background-image: -webkit-radial-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  border-radius: 50%;
+}
+.oxmod-smct-landing .editor {
+  width: 100%;
+  display: none;
+  background-color: #f5f5f5;
+}
+.oxmod-smct-landing .logos.end {
+  transform: rotateX(-30deg) rotateY(0deg) !important;
+}
+.oxmod-smct-landing .logos.roll {
+  animation-name: rolling;
+  animation-duration: 20s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.oxmod-smct-landing .logos {
+  transition: all 2s;
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg) rotateY(80deg);
+  text-align: center;
+}
+.oxmod-smct-landing .logos img {
+  margin-top: 120px;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  border-style: none;
+  border-radius: 5px;
+  -webkit-box-reflect: below 3px -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+  left: 50%;
+  margin-left: -30px;
+}
+.oxmod-smct-landing .goldtitle {
+  font-size: 20px;
+  line-height: 2;
+  color: goldenrod;
+}
+.oxmod-smct-landing .bottom {
+  margin-top: 300px;
+}
+.oxmod-smct-landing button {
+  width: 120px;
+  background-color: transparent;
+  border: none;
+  height: 30px;
+  font-size: 16px;
+  color: gold;
+}
+.oxmod-smct-landing .editor {
+  color: #555;
+  /*
+    .bt-second {
+
+      background-color: #09c;
+
+    }
+    .buttons {
+      padding: 20px 0;
+      button {
+        width: 48%;
+        margin: 0 1%;
+      }
+    }*/
+}
+.oxmod-smct-landing .editor .bgcolor,
+.oxmod-smct-landing .editor .textcolor {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border: solid 1px #000;
+  border-radius: 2px;
+  margin: 10px;
+  text-align: center;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.oxmod-smct-landing .editor .bgcolor input,
+.oxmod-smct-landing .editor .textcolor input {
+  margin-top: 35px;
+}
+.oxmod-smct-landing .editor .bgcolor-1 {
+  background-color: #0b97c4;
+}
+.oxmod-smct-landing .editor .bgcolor-2 {
+  background-color: yellow;
+}
+.oxmod-smct-landing .editor .bgcolor-3 {
+  background-color: red;
+}
+.oxmod-smct-landing .editor .bgcolor-4 {
+  background-color: rosybrown;
+}
+.oxmod-smct-landing .editor .bgcolor-5 {
+  background-color: green;
+}
+.oxmod-smct-landing .editor .bgcolor-6 {
+  background-color: greenyellow;
+}
+.oxmod-smct-landing .editor .bgcolor-7 {
+  background-color: gray;
+}
+.oxmod-smct-landing .editor .bgcolor-8 {
+  background-color: gold;
+}
+.oxmod-smct-landing .editor .bgcolor-9 {
+  background-color: blueviolet;
+}
+.oxmod-smct-landing .editor .bgcolor-10 {
+  background-color: silver;
+}
+.oxmod-smct-landing .editor .bgcolor-11 {
+  background-color: chocolate;
+}
+.oxmod-smct-landing .editor .bgcolor-12 {
+  background-color: cadetblue;
+}
+.oxmod-smct-landing .editor .color-1 {
+  background-color: #fff;
+}
+.oxmod-smct-landing .editor .color-2 {
+  background-color: yellow;
+}
+.oxmod-smct-landing .editor .color-3 {
+  background-color: red;
+}
+.oxmod-smct-landing .editor .color-4 {
+  background-color: rosybrown;
+}
+.oxmod-smct-landing .editor .color-5 {
+  background-color: green;
+}
+.oxmod-smct-landing .editor .color-6 {
+  background-color: greenyellow;
+}
+.oxmod-smct-landing .editor .color-7 {
+  background-color: gray;
+}
+.oxmod-smct-landing .editor .color-8 {
+  background-color: gold;
+}
+.oxmod-smct-landing .editor .color-9 {
+  background-color: #0099cc;
+}
+.oxmod-smct-landing .editor .color-10 {
+  background-color: silver;
+}
+.oxmod-smct-landing .editor .color-11 {
+  background-color: chocolate;
+}
+.oxmod-smct-landing .editor .color-12 {
+  background-color: cadetblue;
+}
+.oxmod-smct-landing .editor .tpl-list {
+  height: 80px;
+  overflow-x: auto;
+  width: 100%;
+  margin: 0 auto;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #555;
+}
+.oxmod-smct-landing .editor .tpl-list input[type=text] {
+  border: solid 1px #ccc;
+  height: 20px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+.oxmod-smct-landing .editor .toolbar > dl {
+  display: none;
+}
+.oxmod-smct-landing .editor .toolbar > dl > dt {
+  font-size: 14px;
+  padding: 0px 10px;
+  color: #666;
+  border-bottom: solid 1px #f5f5f5;
+  margin-bottom: 5px;
+  text-align: left;
+  line-height: 30px;
+  height: 30px;
+}
+.oxmod-smct-landing .editor .toolbar > dl > dt input {
+  height: 22px;
+  border: solid 1px #ccc;
+  border-radius: 10px;
+}
+.oxmod-smct-landing .editor .toolbar[data-on='1'] > dl:nth-child(1) {
+  display: block;
+}
+.oxmod-smct-landing .editor .toolbar[data-on='2'] > dl:nth-child(2) {
+  display: block;
+}
+.oxmod-smct-landing .editor .toolbar[data-on='3'] > dl:nth-child(3) {
+  display: block;
+}
+.oxmod-smct-landing .editor .toolbar[data-on='1'] > .switches > button:nth-child(1) {
+  background-color: #0099cc;
+}
+.oxmod-smct-landing .editor .toolbar[data-on='2'] > .switches > button:nth-child(2) {
+  background-color: #0099cc;
+}
+.oxmod-smct-landing .editor .toolbar[data-on='3'] > .switches > button:nth-child(3) {
+  background-color: #0099cc;
+}
+.oxmod-smct-landing .editor .preview {
+  border-radius: 25.6px;
+  width: 320px;
+  height: 320px;
+  margin: 10px auto;
+  box-shadow: 0px 1px 1px #ccc;
+  font-family: sans-serif;
+  text-align: center;
+  overflow: hidden;
+}
+.oxmod-smct-landing .editor .qrcode {
+  margin-top: 19.2px;
+  width: 179.2px;
+  padding: 5px;
+  border: solid 1px #ccc;
+}
+.oxmod-smct-landing .editor .card-header {
+  color: #fff;
+  font-size: 40.96px;
+  letter-spacing: 3.2px;
+  height: 76.8px;
+  line-height: 76.8px;
+  font-family: '黑体', sans-serif;
+  font-weight: 700;
+}
+.oxmod-smct-landing .editor .card-body {
+  background-color: #fff;
+  height: 217.6px;
+}
+.oxmod-smct-landing .editor .card-footer {
+  height: 25.6px;
+  line-height: 25.6px;
+  font-size: 12px;
+  color: #666;
+  background-color: #fff;
+  letter-spacing: 1px;
+}
+.oxmod-smct-landing .editor .central {
+  position: absolute;
+  margin-top: 88.84px;
+  width: 320px;
+  height: 49.92px;
+  text-align: center;
+  line-height: 0;
+  overflow: hidden;
+}
+.oxmod-smct-landing .editor .central-bg {
+  background-color: #fff;
+}
+.oxmod-smct-landing .editor .central img {
+  width: 49.92px;
+  height: 49.92px;
+  vertical-align: middle;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.oxmod-smct-landing .editor .carlogo {
+  display: inline-block;
+  font-size: 12px;
+  color: #999;
+}
+.oxmod-smct-landing .editor .carlogo img {
+  width: 40px;
+}
+.oxmod-smct-landing .editor .carlist > .carlogo {
+  padding: 0 5px;
+}
+.oxmod-smct-landing .editor .switches {
+  border-top: solid 1px #0099cc;
+  font-size: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.oxmod-smct-landing .editor .switches button {
+  background-color: #999;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  width: 33.3333333%;
+  border-style: none;
+  box-shadow: inset 0px 0 1px #fff;
+  outline: none;
+}
+.oxmod-smct-landing .editor .switches button:hover {
+  opacity: .9;
+}
+.oxmod-smct-landing .editor .carlist {
+  width: 100%;
+  overflow-x: auto;
+  text-align: center;
+  height: 70px;
+  transition: all .3s;
+}
+.oxmod-smct-landing .editor .bt-second,
+.oxmod-smct-landing .editor .bt-main {
+  border: solid 1px #ccc;
+  background-color: #f60;
+  color: #fff;
+  font-size: 15px;
+  padding: 0;
+  border-radius: 5px;
+  height: 40px;
+}
+.oxmod-smct-landing .editor .bt-main {
+  width: 80%;
+}
+.oxmod-smct-landing .editor .title {
+  font-weight: 400;
+  margin: 0 0 5px;
+}
+.oxmod-smct-landing .editor .title:before,
+.oxmod-smct-landing .editor .title:after {
+  content: '';
+  width: 50px;
+  border-top: solid 1px #eee;
+  display: inline-block;
+  margin: 0px 15px 0;
+  vertical-align: middle;
+}
+.oxmod-smct-landing .editor .subtext,
+.oxmod-smct-landing .editor .maintext {
+  background-color: transparent;
+  border-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  width: 90%;
+  letter-spacing: inherit;
+}
