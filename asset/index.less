@@ -185,17 +185,6 @@
     line-height: 2;
     color:goldenrod;
   }
-  .bottom{
-    margin-top:300px;
-  }
-  button{
-    width: 120px;
-    background-color: transparent;
-    border:none;
-    height:30px;
-    font-size:16px;
-    color:gold;
-  }
 
 
 
@@ -549,6 +538,53 @@
       color:inherit;
       width:90%;
       letter-spacing: inherit;
+    }
+  }
+
+
+  .bottom{
+    margin-top:300px;
+    font-size:18px;
+    line-height: 40px;
+    color:gold;
+    button{
+      width: 120px;
+      background-color: transparent;
+      border:none;
+      height:30px;
+      font-size:16px;
+      color:gold;
+    }
+  }
+
+
+  button[data-role="prev"],
+  button[data-role="next"]{
+    background: url(img/pointer.png) no-repeat;
+    height: 40px;
+    width:100px;
+    text-shadow: 0 0 5px #ccc;
+    vertical-align: middle;
+    border-radius: 5px;
+    transform: scale(.75);
+    transition: transform .5s;
+    &:hover{
+
+      //background-color: #333;
+      //opacity: .8;
+      transform: scale(.9);
+    }
+  }
+  button[data-role="prev"]{
+    background-position: center -108px;
+    &:disabled{
+      background-position: center 0px;
+    }
+  }
+  button[data-role="next"]{
+    background-position: center -168px;
+    &:disabled{
+      background-position: center -51px;
     }
   }
 

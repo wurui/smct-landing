@@ -156,17 +156,6 @@
   line-height: 2;
   color: goldenrod;
 }
-.oxmod-smct-landing .bottom {
-  margin-top: 300px;
-}
-.oxmod-smct-landing button {
-  width: 120px;
-  background-color: transparent;
-  border: none;
-  height: 30px;
-  font-size: 16px;
-  color: gold;
-}
 .oxmod-smct-landing .editor {
   color: #555;
   /*
@@ -455,4 +444,45 @@
   color: inherit;
   width: 90%;
   letter-spacing: inherit;
+}
+.oxmod-smct-landing .bottom {
+  margin-top: 300px;
+  font-size: 18px;
+  line-height: 40px;
+  color: gold;
+}
+.oxmod-smct-landing .bottom button {
+  width: 120px;
+  background-color: transparent;
+  border: none;
+  height: 30px;
+  font-size: 16px;
+  color: gold;
+}
+.oxmod-smct-landing button[data-role="prev"],
+.oxmod-smct-landing button[data-role="next"] {
+  background: url(img/pointer.png) no-repeat;
+  height: 40px;
+  width: 100px;
+  text-shadow: 0 0 5px #ccc;
+  vertical-align: middle;
+  border-radius: 5px;
+  transform: scale(0.75);
+  transition: transform .5s;
+}
+.oxmod-smct-landing button[data-role="prev"]:hover,
+.oxmod-smct-landing button[data-role="next"]:hover {
+  transform: scale(0.9);
+}
+.oxmod-smct-landing button[data-role="prev"] {
+  background-position: center -108px;
+}
+.oxmod-smct-landing button[data-role="prev"]:disabled {
+  background-position: center 0px;
+}
+.oxmod-smct-landing button[data-role="next"] {
+  background-position: center -168px;
+}
+.oxmod-smct-landing button[data-role="next"]:disabled {
+  background-position: center -51px;
 }

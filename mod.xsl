@@ -16,8 +16,9 @@
                     <div class="J_logo logos"></div>
                     <h3 class="goldtitle">请选择你的车标</h3>
                     <div class="bottom">
-                        <button class="J_reset" data-role="prev">« 前一批</button>
-                        <button class="J_reset" data-role="next">换一批 »</button>
+                        <button class="J_reset" data-role="prev" disabled="disabled"></button>
+                        换一批
+                        <button class="J_reset" data-role="next"></button>
                     </div>
                 </div>
                 <div class="J_bg topmask">

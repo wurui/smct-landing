@@ -19,8 +19,10 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
 
 
     var pageIndex = 0,
+        totalPage=Carlogo.totalPage,
         $logoContainer;
     var render = function () {
+        pageIndex=(totalPage+pageIndex)%totalPage;
         $logoContainer.html(Carlogo.render(pageIndex)).addClass('roll')
         var images = $logoContainer.children('img');
         var len = images.length;
@@ -35,22 +37,24 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
             var $bg = $('.J_bg', $mod);
             var $editor = $('.J_editor', $mod);
             var $coolthings = $('.J_coolthings', $mod);
-            var $central = $('.J_central', $mod).on('click', function () {
-                    $logoContainer.css('animationPlayState', "running").show()
-                    $editor.addClass('fadeout');
-                    $bg.removeClass('fadeout')
-                    $('img', $bg).remove();
-                    $coolthings.show().addClass('fadein')
-                    setTimeout(function () {
-                        $editor.hide();
-                    }, 1000)
+            var $central = $('.J_central', $mod).on('tap', function (e) {
+                    if(e.target.tagName.toLowerCase()=='img') {
+                        $logoContainer.css('animationPlayState', "running").show()
+                        $editor.addClass('fadeout');
+                        $bg.removeClass('fadeout')
+                        $('img', $bg).remove();
+                        $coolthings.show().addClass('fadein')
+                        setTimeout(function () {
+                            $editor.hide();
+                        }, 1000)
+                    }
                 }),
-                $text1 = $('.J_text1', $mod).on('click', function () {
+                $text1 = $('.J_text1', $mod).on('tap', function () {
 
 
                 }),$text2=$('.J_text2',$mod);
 
-            $logoContainer = $('.J_logo', $mod).on('click', function (e) {
+            $logoContainer = $('.J_logo', $mod).on('tap', function (e) {
                 var tar = e.target;
                 if (tar.tagName.toLowerCase() == 'img') {
                     var no = tar.getAttribute('data-no'),
@@ -80,19 +84,32 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
             render()
 
 
-            $mod.on('click', '.J_reset', function (e) {
-                var role = e.target.getAttribute('data-role')
+            var btnPrev=$('.J_reset[data-role="prev"]')[0],btnNext=$('.J_reset[data-role="next"]')[0],
+                checkBtn=function(){
+
+                    btnPrev && (btnPrev.disabled=pageIndex==0);
+                    btnNext && (btnNext.disabled=pageIndex==totalPage-1);
+
+                };
+            $mod.on('tap', '.J_reset', function (e) {
+                var tar= e.target;
+                var role = tar.getAttribute('data-role')
 
                 switch (role) {
                     case 'next':
+
                         pageIndex++;
+                        checkBtn();
+
                         render()
                         break
                     case 'prev':
-                        if (pageIndex > 0) {
-                            pageIndex--;
-                            render()
-                        }
+
+                        pageIndex--;
+                        checkBtn();
+
+                        render()
+
                         break
                 }
 
