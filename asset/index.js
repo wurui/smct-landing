@@ -140,7 +140,7 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                     }
                     hid.value=settings[k];
                 }
-                return false;
+                return true;
 
 
 
