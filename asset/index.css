@@ -114,7 +114,7 @@
   width: 100%;
   margin-top: 150px;
   height: 150px;
-  background-image: -webkit-radial-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -webkit-radial-gradient(rgba(255, 255, 255, 0.2), rgba(100, 100, 100, 0.1), rgba(100, 100, 100, 0));
   border-radius: 50%;
 }
 .oxmod-smct-landing .editor {
@@ -471,10 +471,11 @@
   border-radius: 5px;
   transform: scale(0.75);
   transition: transform .5s;
+  outline: none;
 }
-.oxmod-smct-landing button[data-role="prev"]:hover,
-.oxmod-smct-landing button[data-role="next"]:hover {
-  transform: scale(0.9);
+.oxmod-smct-landing button[data-role="prev"]:active,
+.oxmod-smct-landing button[data-role="next"]:active {
+  transform: scale(1.2);
 }
 .oxmod-smct-landing button[data-role="prev"] {
   background-position: center -108px;
@@ -557,7 +558,7 @@
 }
 .oxmod-smct-landing .rpm .falling {
   transform: rotate(-240deg) !important;
-  transition: transform 10s;
+  transition: transform 5s;
 }
 .oxmod-smct-landing .rpm i {
   position: absolute;

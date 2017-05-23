@@ -132,7 +132,7 @@
     width:100%;
     margin-top:150px;
     height:150px;
-    background-image:  -webkit-radial-gradient(rgba(255,255,255,.2),rgba(255,255,255,0));
+    background-image:  -webkit-radial-gradient(rgba(255,255,255,.2),rgba(100,100,100,.1),rgba(100,100,100,0));
     border-radius: 50%;
   }
 
@@ -571,11 +571,12 @@
     border-radius: 5px;
     transform: scale(.75);
     transition: transform .5s;
-    &:hover{
+    outline: none;
+    &:active{
 
       //background-color: #333;
       //opacity: .8;
-      transform: scale(.9);
+      transform: scale(1.2);
     }
   }
   button[data-role="prev"]{
@@ -663,7 +664,7 @@
     }
     .falling{
       transform: rotate(-240deg) !important;
-      transition: transform 10s;
+      transition: transform 5s;
     }
     i{
       position: absolute;

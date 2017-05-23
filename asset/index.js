@@ -68,6 +68,7 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
 
 
                 render();
+
                 setTimeout(function () {
                     $loading.addClass('fadeout');
                     setTimeout(function(){
@@ -78,10 +79,17 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                 clearInterval(timer);
             }, function (data) {
                 var deg = -240 + data.loaded / data.total * 8 * 30;
-                $pointer.removeClass('falling').css('transform', 'rotate(' + deg + 'deg)');
+                $pointer.css({
+                    'transform': 'rotate(' + deg + 'deg)',
+                    transitionDuration:'.5s'
+                });
                 if (TO)clearTimeout(TO)
-                TO = setTimeout(function () {
-                    $pointer.addClass('falling')
+                TO = setTimeout(function () {//alert(1)
+                   // $pointer.addClass('falling')
+                    $pointer.css({
+                        'transform': 'rotate(-240deg)',
+                        transitionDuration:'5s'
+                    });
                 }, 500)
 
                 //$('.J_count',$loading).html(data.loaded)
@@ -99,6 +107,10 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
             $mod.on('tap', '.J_reset', function (e) {
                 var tar = e.target;
                 var role = tar.getAttribute('data-role')
+                //console.log(tar.disabled)
+                if(tar.disabled){
+                    return false;
+                }
 
                 switch (role) {
                     case 'next':
