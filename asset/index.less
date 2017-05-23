@@ -111,7 +111,7 @@
     background-position: right bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: .4;
+    opacity: .1;
 
 
   }
@@ -133,6 +133,7 @@
     background-image:  -webkit-radial-gradient(rgba(255,255,255,.2),rgba(255,255,255,0));
     border-radius: 50%;
   }
+
   .editor{
    // position: absolute;
     width:100%;
@@ -585,6 +586,179 @@
     background-position: center -168px;
     &:disabled{
       background-position: center -51px;
+    }
+  }
+
+  .progressbar{
+    font-size:15px;
+    color:#999;
+    position: absolute;
+    width:100%;
+    height:100%;
+    background-color: #000;
+    background-image: radial-gradient(#333,#666);
+    padding-top:20%;
+  }
+  .timer{
+    background-color: rgba(255,255,255,.9);
+    padding:5px 30px;
+    border: solid 3px #999;
+    border-radius: 5px;
+    color:#000;
+    font-size:20px;
+  }
+  .rpm{
+    background-color:#111;
+    background-image: radial-gradient(#444,#222);
+    //background-image:-webkit-linear-gradient(top,rgba(0,0,0,1) 10%,rgba(255,255,255,0));;
+    border:solid 5px silver;
+    box-shadow:inset 0 0 20px #000;
+    width:200px;
+    height:200px;
+    line-height: 200px;
+    border-radius: 50%;
+    margin:0 auto;
+    text-align: left;
+
+    .pointer{
+      position: absolute;
+      width:200px;
+      height:200px;
+      text-align: left;
+      line-height: 200px;
+      transform: rotate(-240deg);
+      transition: transform .5s;
+      &:before{
+        content: ' ';
+        position: absolute;
+        height:0px;
+        width:0px;
+        border-style: solid;
+        border-width: 5px 0 5px 70px;
+        border-color: transparent transparent transparent #f5f5f5;
+        top:95px;
+        left:100px;
+
+        //background-color: #900;
+      }
+      &:after{
+        content: ' ';
+        width:50px;
+        height:50px;
+        left:50%;
+        top:50%;
+        margin-left:-25px;
+        margin-top:-25px;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,.9);
+        background-color: #000;
+        position: absolute;
+        background-image: radial-gradient(#222,#333);
+        box-shadow: 0 0 10px #000;
+      }
+    }
+    .falling{
+      transform: rotate(-240deg) !important;
+      transition: transform 10s;
+    }
+    i{
+      position: absolute;
+      margin-top:90px;
+      width:200px;
+      height:20px;
+      line-height: 20px;
+      font-size: 16px;
+      font-style: normal;
+      text-align: left;
+      &:before{
+        content: '-';
+        color:#ccc;
+        font-size:20px;
+      }
+      &:after{
+        width:20px;
+        height:20px;
+        display: inline-block;
+        text-align: center;
+        //transform-origin: 0 50%;
+        font-size: 22px;
+        position: absolute;
+        text-shadow: 1px 2px 5px #000;
+
+      }
+    }
+
+    i:nth-child(1){
+      color:#ccc;
+      transform: rotate(-60deg);
+      &:after{
+        content: '0';
+        transform: rotate(60deg);
+      }
+    }
+    i:nth-child(2){
+      color:#ccc;
+      transform: rotate(-30deg);
+      &:after{
+        content: '1';
+        transform: rotate(30deg);
+      }
+    }
+    i:nth-child(3){
+      color:#caa;
+      transform: rotate(-0deg);
+      &:after{
+        content: '2';
+        transform: rotate(0deg);
+      }
+    }
+    i:nth-child(4){
+      color:#c99;
+      transform: rotate(30deg);
+      &:after{
+        content: '3';
+        transform: rotate(-30deg);
+      }
+    }
+    i:nth-child(5){
+      color:#c88;
+      transform: rotate(60deg);
+      &:after{
+        content: '4';
+        transform: rotate(-60deg);
+      }
+    }
+    i:nth-child(6){
+      color:#c77;
+      transform: rotate(90deg);
+      &:after{
+        content: '5';
+        transform: rotate(-90deg);
+      }
+    }
+    i:nth-child(7){
+      color:#c33;
+      transform: rotate(120deg);
+      &:after{
+        content: '6';
+        transform: rotate(-120deg);
+      }
+    }
+    i:nth-child(8){
+      color:#d00;
+      transform: rotate(150deg);
+      &:after{
+        content: '7';
+        transform: rotate(-150deg);
+      }
+    }
+    i:nth-child(9){
+      color:#f00;
+      transform: rotate(180deg);
+      &:after{
+        content: '8';
+        transform: rotate(-180deg);
+      }
     }
   }
 

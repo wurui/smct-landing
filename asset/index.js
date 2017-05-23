@@ -81,7 +81,35 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                 }
             });
 
-            render()
+
+            var $timer=$('.J_Timer',$mod),
+                $loading=$('.J_loading',$mod),
+                $pointer=$('.J_pointer',$mod),
+                start_ts=Date.now(),
+                TO, timer=setInterval(function(){
+
+                    $timer.html(((Date.now()-start_ts)/1000).toFixed(1));
+                },100)
+            Carlogo.preload(0,function(){
+                //$loading.remove();
+                $loading.addClass('fadeout');
+                setTimeout(function(){
+                    $loading.remove();
+                    render();
+                },500)
+
+                clearInterval(timer);
+            },function(data){
+                var deg= -240 + data.loaded/data.total * 8 *30;
+                $pointer.removeClass('falling').css('transform','rotate('+ deg+'deg)');
+                if(TO)clearTimeout(TO)
+                TO=setTimeout(function(){
+                    $pointer.addClass('falling')
+                },500)
+
+                //$('.J_count',$loading).html(data.loaded)
+                //$('.J_total',$loading).html(data.total)
+            })
 
 
             var btnPrev=$('.J_reset[data-role="prev"]')[0],btnNext=$('.J_reset[data-role="next"]')[0],

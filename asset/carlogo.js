@@ -5,26 +5,53 @@ define(['./cars'], function (CarList) {
         return '//www.shaomachetie.com/img/cars/' + n + '.png'
         //return '//www.shaomachetie.com/static/smct/img/carlogo/' + name + '.jpg';
     };
-    var preload=function(src){
-        var im=new Image();
-        im.src=src;
+    var preloadGroup = function (grp, cb,progress_cb) {
+        var count = 0, len = grp.length,
+            onImgload = function () {
+                count++;//alert(this.tagName)
+
+                var img = this;
+                img.onload = img.onerror = null;
+
+                progress_cb && progress_cb({total:len,loaded:count})
+
+                if (count == len) {
+                    cb && cb();
+                }
+
+
+            };
+        for (var i = 0, n; n = grp[i]; i++) {
+            var img = new Image();
+
+            img.onload = img.onerror = onImgload;
+            img.src = n;
+            if (img.readyState == "complete" || img.complete) {
+
+                img.onload && img.onload.call(img)
+                img.onload = img.onerror = null;
+
+            }
+        }
+
     };
+
 
     return {
         totalPage: Math.ceil(CarList.length / pageSize),
-        maxLoadedIndex:0,
-        preload:function(idex){
+        maxLoadedIndex: -1,
+        preload: function (idex,fn,progress_cb) {
             var idex = idex || 0;
 
-            if(idex>this.maxLoadedIndex){
-
+            if (idex > this.maxLoadedIndex) {
+                this.maxLoadedIndex=idex;
                 var cars = CarList.slice(idex * pageSize, (idex + 1) * pageSize);
-                var i = 0;
+                var i = 0,arr=[];
                 while (i < cars.length) {
                     var car = cars[i++];
-                    preload(carlogoPath(car.no))
+                    arr.push(carlogoPath(car.no))
                 }
-
+                preloadGroup(arr,fn,progress_cb);
             }
         },
         render: function (idex) {
@@ -37,7 +64,7 @@ define(['./cars'], function (CarList) {
                 html += '<img data-no="' + car.no + '" data-name="' + car.name + '" src="' + carlogoPath(car.no) + '"/>'
 
             }
-            this.preload(idex+1)
+            this.preload(idex + 1)
             return html;
         }
 
