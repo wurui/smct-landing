@@ -83,14 +83,15 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                     'transform': 'rotate(' + deg + 'deg)',
                     transitionDuration:'.5s'
                 });
+
                 if (TO)clearTimeout(TO)
-                TO = setTimeout(function () {//alert(1)
-                   // $pointer.addClass('falling')
+                TO = setTimeout(function () {
                     $pointer.css({
                         'transform': 'rotate(-240deg)',
                         transitionDuration:'5s'
                     });
                 }, 500)
+
 
                 //$('.J_count',$loading).html(data.loaded)
                 //$('.J_total',$loading).html(data.total)
