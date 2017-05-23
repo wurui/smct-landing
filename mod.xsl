@@ -7,14 +7,12 @@
         主要是搞点酷炫效果来吸引用户
         -->
         <div class="J_OXMod oxmod-smct-landing" ox-mod="smct-landing">
-            <div class="fullscreen J_coolthings">
+            <div class="fullscreen J_coolthings fadein">
                 <div class="background">
 
                 </div>
                 <div class="playground">
-                    <div class="logos-bg">
-
-                    </div>
+                    <div class="logos-bg"></div>
                     <div class="J_logo logos"></div>
                     <h3 class="goldtitle">请选择你的车标</h3>
                     <div class="bottom">
@@ -22,9 +20,6 @@
                         换一批
                         <button class="J_reset" data-role="next"></button>
                     </div>
-                </div>
-                <div class="J_bg topmask">
-                    <h3 class="goldtitle">已选车标</h3><br/>
                 </div>
 
                 <div class="J_loading progressbar">
@@ -41,8 +36,11 @@
                         <div class="pointer J_pointer"></div>
                     </div>
                     <br/><br/>
-                    <span class="J_Timer timer">0.0</span>
+                    <span class="J_Timer timer">Go!</span>
                 </div>
+            </div>
+            <div class="J_topmask topmask">
+
             </div>
 
             <div class="editor J_editor">
