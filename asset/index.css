@@ -46,6 +46,7 @@
 .oxmod-smct-landing {
   /* CSS */
   text-align: center;
+  min-height: 320px;
   /*
   .downout{
 

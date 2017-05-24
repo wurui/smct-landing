@@ -62,7 +62,11 @@ define(['./cars'], function (CarList) {
                 html += '<img data-no="' + car.no + '" data-name="' + car.name + '" src="' + carlogoPath(car.no) + '"/>'
 
             }
-            this.preload(idex + 1)
+            var _this=this;
+            setTimeout(function(){
+                _this.preload(idex + 1)
+            },1)
+
             return html;
         }
 

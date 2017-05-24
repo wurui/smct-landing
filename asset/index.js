@@ -103,6 +103,7 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                     btnNext && (btnNext.disabled = pageIndex == totalPage - 1);
 
                 };
+            var lastTapTS=0;
             $mod.on('tap', '.J_reset', function (e) {
                 var tar = e.target;
                 var role = tar.getAttribute('data-role')
@@ -110,6 +111,10 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                 if(tar.disabled){
                     return false;
                 }
+                if(Date.now()-lastTapTS<200){
+                    return false
+                }
+                lastTapTS=Date.now();
 
                 switch (role) {
                     case 'next':
