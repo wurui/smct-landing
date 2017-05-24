@@ -46,6 +46,14 @@
 .oxmod-smct-landing {
   /* CSS */
   text-align: center;
+  /*
+  .downout{
+
+    transition: all .5s;
+    transform: translate(-100%,0);
+    transition-timing-function: ease-out;
+
+  }*/
 }
 .oxmod-smct-landing .fullscreen {
   background-color: #000;
@@ -79,7 +87,15 @@
   z-index: 4;
   border-radius: 5px;
 }
-.oxmod-smct-landing .topmask.fadeout img {
+.oxmod-smct-landing .topmask.bgfadeout {
+  transition: all .5s;
+  background: transparent none;
+}
+.oxmod-smct-landing .topmask.bgfadeout h3 {
+  color: transparent;
+  font-size: 0;
+}
+.oxmod-smct-landing .topmask.bgfadeout img {
   transform: scale(0.3);
 }
 .oxmod-smct-landing .fadeout {
@@ -152,6 +168,9 @@
   cursor: pointer;
   left: 50%;
   margin-left: -30px;
+}
+.oxmod-smct-landing .logos img:active {
+  opacity: .8;
 }
 .oxmod-smct-landing .goldtitle {
   font-size: 20px;

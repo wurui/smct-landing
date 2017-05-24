@@ -28,10 +28,7 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
 
                     }
                 }),
-                $text1 = $('.J_text1', $mod).on('tap', function () {
-
-
-                }), $text2 = $('.J_text2', $mod);
+                $text1 = $('.J_text1', $mod), $text2 = $('.J_text2', $mod);
 
             $logoContainer = $('.J_logo', $mod).on('tap', function (e) {
                 var tar = e.target;
@@ -41,16 +38,17 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
 
                     $logoContainer.css('animationPlayState', "paused");
 
-
                     var cloneNode=$(tar).clone().removeAttr('style');
-                    $topmask.empty().removeClass('fadeout').prepend(cloneNode).append('<h3 class="goldtitle">已选车标</h3>').addClass('fadein');
+                    $topmask.empty().removeClass('bgfadeout').prepend(cloneNode).append('<h3 class="goldtitle">已选车标</h3>').addClass('fadein');
 
                     setTimeout(function () {
+                        $coolthings.hide().removeClass('fadein');
+
                         $editor.show().removeClass('fadeout');
                         $central.html(no ? '<img src="' + Carlogo.fullpath(no) + '"/>' : '').attr('data-no', no);
-                        $topmask.removeClass('fadein').addClass('fadeout')
+                        $topmask.removeClass('fadein').addClass('bgfadeout')
 
-                        $coolthings.hide().removeClass('fadein');
+
 
                     }, 1500);
                 }

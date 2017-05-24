@@ -88,7 +88,13 @@
       border-radius: 5px;
     }
   }
-  .topmask.fadeout{
+  .topmask.bgfadeout{
+    transition: all .5s;
+    background: transparent none;
+    h3{
+      color:transparent;
+      font-size:0;
+    }
     img{
       transform: scale(0.3);
     }
@@ -97,7 +103,14 @@
     transition: all .5s;
     opacity: 0;
     transition-timing-function: ease-out;
-  }
+  }/*
+  .downout{
+
+    transition: all .5s;
+    transform: translate(-100%,0);
+    transition-timing-function: ease-out;
+
+  }*/
   .fadein{
     transition: opacity .5s;
     transition-timing-function: ease-in;
@@ -179,6 +192,9 @@
       cursor:pointer;
       left:50%;
       margin-left:-30px;
+      &:active{
+        opacity: .8;
+      }
     }
   }
 
