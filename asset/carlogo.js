@@ -59,7 +59,7 @@ define(['./cars'], function (CarList) {
                 html = '';
             while (i < cars.length) {
                 var car = cars[i++];
-                html += '<img data-no="' + car.no + '" data-name="' + car.name + '" src="' + carlogoPath(car.no) + '"/>'
+                html += '<img data-no="' + car.no + '" class="'+(car.className||'')+'" data-name="' + car.name + '" src="' + carlogoPath(car.no) + '"/>'
 
             }
             var _this=this;
