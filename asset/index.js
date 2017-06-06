@@ -38,7 +38,7 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
 
                     $logoContainer.css('animationPlayState', "paused");
 
-                    var cloneNode=$(tar).clone().removeAttr('style');
+                    var cloneNode = $(tar).clone().removeAttr('style');
                     $topmask.empty().removeClass('bgfadeout').prepend(cloneNode).append('<h3 class="goldtitle">已选车标</h3>').addClass('fadein');
 
                     setTimeout(function () {
@@ -49,7 +49,6 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                         $topmask.removeClass('fadein').addClass('bgfadeout')
 
 
-
                     }, 1500);
                 }
             });
@@ -58,35 +57,82 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
             var $timer = $('.J_Timer', $mod),
                 $loading = $('.J_loading', $mod),
                 $pointer = $('.J_pointer', $mod),
+                refreshTime=function () {console.log('ts',Date.now() - start_ts)
+                    var ts=Date.now() - start_ts;
+                    $timer.html((ts / 1000).toFixed(1));
+                    return ts;
+                },
                 start_ts = Date.now(),
-                TO, timer = setInterval(function () {
-                    $timer.html(((Date.now() - start_ts) / 1000).toFixed(1));
-                }, 100)
+                TO, timer = setInterval(refreshTime, 100),
+                clearResult=function(){
+                    $loading.addClass('fadeout');
+                    setTimeout(function () {
+                        $loading.remove();
+                    }, 500)
+                },
+                showHongbao=function(){
+                    if(localStorage.getItem('hongbao')){
+                        return false
+                    }
+                    var ts=refreshTime(),
+                        num= 1,
+                        msg='';
+
+                    switch (true){
+                        case ts<100:
+                            num=15.88;
+                            msg='你就是传说中的极速高手'
+                            break
+                        case ts<200:
+                            num=12.88;
+                            msg='我会静静地欣赏你的尾灯'
+                            break
+                        case ts<500:
+                            num=12.58;
+                            msg='好吧,我吃土'
+                            break
+                        case ts<1000:
+                            num=12.28;
+                            msg='不错哟,速度与基情下次找你了'
+                            break
+                        case ts<2000:
+                            num=12.28;
+                            msg='很少人能让你吃土'
+                            break
+                        case ts<5000:
+                            num=9.88;
+                            msg='没事,尾灯也很漂亮'
+                            break
+                        case ts>=5000:
+                            msg='龟速一点,安全第一吧'
+                            num=9.98;
+                            break
+                    }
+                    $loading.addClass('load-end')
+                    localStorage.setItem('hongbao','极速车手#'+num);
+                    $('.J_Result',$mod).html(msg+'<br/><big>获得'+num+'元极速车手红包</big><br/><small>该红包用于购买扫码车贴</small>')
+                    return true
+
+                };
             Carlogo.preload(0, function () {
 
-
+                clearInterval(timer);
                 render();
 
-                setTimeout(function () {
-                    $loading.addClass('fadeout');
-                    setTimeout(function(){
-                        $loading.remove();
-                    },500)
+                setTimeout(clearResult, showHongbao()?3000:50)
 
-                }, 1000)
-                clearInterval(timer);
             }, function (data) {
                 var deg = -240 + data.loaded / data.total * 8 * 30;
                 $pointer.css({
                     'transform': 'rotate(' + deg + 'deg)',
-                    transitionDuration:'.5s'
+                    transitionDuration: '.5s'
                 });
 
                 if (TO)clearTimeout(TO)
                 TO = setTimeout(function () {
                     $pointer.css({
                         'transform': 'rotate(-240deg)',
-                        transitionDuration:'5s'
+                        transitionDuration: '5s'
                     });
                 }, 500)
 
@@ -103,18 +149,18 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                     btnNext && (btnNext.disabled = pageIndex == totalPage - 1);
 
                 };
-            var lastTapTS=0;
+            var lastTapTS = 0;
             $mod.on('tap', '.J_reset', function (e) {
                 var tar = e.target;
                 var role = tar.getAttribute('data-role')
                 //console.log(tar.disabled)
-                if(tar.disabled){
+                if (tar.disabled) {
                     return false;
                 }
-                if(Date.now()-lastTapTS<200){
+                if (Date.now() - lastTapTS < 200) {
                     return false
                 }
-                lastTapTS=Date.now();
+                lastTapTS = Date.now();
 
                 switch (role) {
                     case 'next':

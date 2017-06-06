@@ -29,18 +29,18 @@
     opacity: 1;
   }
 }
-@keyframes shining {
+@keyframes shinning {
   0% {
-    text-shadow: 0px 0px 5px #c8c8c8;
-    color: silver;
+    border-color: #999 ;
+    color: darksalmon;
   }
   50% {
-    text-shadow: 0px 0px 15px #c8c8c8;
-    color: gold;
+    color: #646464;
+    border-color: #fff ;
   }
   100% {
-    text-shadow: 0px 0px 5px #c8c8c8;
-    color: silver;
+    color: darksalmon;
+    border-color: #999 ;
   }
 }
 .oxmod-smct-landing {
@@ -682,4 +682,37 @@
 .oxmod-smct-landing .rpm i:nth-child(9):after {
   content: '8';
   transform: rotate(-180deg);
+}
+.oxmod-smct-landing .load-end .hongbao {
+  opacity: 1;
+  transform: scale(1);
+}
+.oxmod-smct-landing .load-end .timer {
+  animation-name: shinning;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-iteration-count: 2;
+  animation-timing-function: linear;
+}
+.oxmod-smct-landing .hongbao {
+  color: #fff;
+  transition: all .5s;
+  transform: scale(0);
+  opacity: 0;
+  position: relative;
+  z-index: 2;
+  width: 80%;
+  margin: 0 10%;
+  top: -220px;
+  background: radial-gradient(gold, gold, rgba(0, 0, 0, 0));
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 20px 0;
+}
+.oxmod-smct-landing .hongbao big {
+  color: #f00;
+  font-size: 1.8em;
+}
+.oxmod-smct-landing .hongbao small {
+  color: #333;
 }

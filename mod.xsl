@@ -37,6 +37,8 @@
                     </div>
                     <br/><br/>
                     <span class="J_Timer timer">Go!</span>
+                    <br/><br/>
+                    <p class="J_Result hongbao"></p>
                 </div>
             </div>
             <div class="J_topmask topmask">
