@@ -19,6 +19,12 @@
                         <button class="J_reset" data-role="prev" disabled="disabled"></button>
                         换一批
                         <button class="J_reset" data-role="next"></button>
+                        <br/><br/>
+                        <label>
+                            上传图标
+                            <input type="file" class="J_uploadfile" style="display:none;"/>
+                        </label>
+
                     </div>
                 </div>
 

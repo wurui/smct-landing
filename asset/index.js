@@ -13,6 +13,17 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
             images[i].style.transform = 'rotateY(' + deg * i + 'deg) translateZ(160px)'; //deg前面不要加空格
         }
     };
+    var getFileData = function (file, fn) {
+        if(!file){
+            return fn(null)
+        }
+        var reader = new FileReader()
+        reader.onload = function (e) {
+            fn(e.target.result, file);
+
+        }
+        reader.readAsDataURL(file);
+    };
     return {
         init: function ($mod) {
 
@@ -28,7 +39,31 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
 
                     }
                 }),
-                $text1 = $('.J_text1', $mod), $text2 = $('.J_text2', $mod);
+                $text1 = $('.J_text1', $mod), $text2 = $('.J_text2', $mod),
+                setLogo=function(no){
+                    $logoContainer.css('animationPlayState', "paused");
+                    var subtitle='已选车标'
+                    if(/^\d+$/.test(no)){
+                        var imgSrc=Carlogo.fullpath(no);
+                    }else{
+                        subtitle='已选图标';
+                        imgSrc=no;
+                        no='base64'
+                    }
+
+                    $topmask.removeClass('bgfadeout').html('<img src="' + imgSrc + '"/><h3 class="goldtitle">'+subtitle+'</h3>').addClass('fadein');
+
+
+                    setTimeout(function () {
+                        $coolthings.hide().removeClass('fadein');
+
+                        $editor.show().removeClass('fadeout');
+                        $central.html(imgSrc ? '<img src="' + imgSrc + '"/>' : '').attr('data-no', no);
+                        $topmask.removeClass('fadein').addClass('bgfadeout')
+
+
+                    }, 1500);
+                };
 
             $logoContainer = $('.J_logo', $mod).on('tap', function (e) {
                 var tar = e.target;
@@ -36,20 +71,10 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                     var no = tar.getAttribute('data-no'),
                         name = tar.getAttribute('data-name');
 
-                    $logoContainer.css('animationPlayState', "paused");
+                    //var cloneNode = $(tar).clone().removeAttr('style');
 
-                    var cloneNode = $(tar).clone().removeAttr('style');
-                    $topmask.empty().removeClass('bgfadeout').prepend(cloneNode).append('<h3 class="goldtitle">已选车标</h3>').addClass('fadein');
+                    setLogo(no);
 
-                    setTimeout(function () {
-                        $coolthings.hide().removeClass('fadein');
-
-                        $editor.show().removeClass('fadeout');
-                        $central.html(no ? '<img src="' + Carlogo.fullpath(no) + '"/>' : '').attr('data-no', no);
-                        $topmask.removeClass('fadein').addClass('bgfadeout')
-
-
-                    }, 1500);
                 }
             });
 
@@ -183,17 +208,24 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
 
             });
 
-            $($mod).on('submit', function (e) {
+            $mod.on('submit', function (e) {
                 var f = e.target;
 
+                var img_no=$central.attr('data-no');
                 var settings = {
                     tpl: 1,
                     bgcolor: 1,
                     // color1:1
                     text1: $text1.val(),
                     text2: $text2.val(),
-                    carlogo: $central.attr('data-no')
+                    carlogo: img_no
                 };
+                if(img_no=='base64'){
+                    
+                    settings.base64=$central.children('img')[0].src
+                }
+
+
                 //console.log(settings)
 
                 for (var k in settings) {
@@ -211,6 +243,13 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
 
 
             });
+            $('.J_uploadfile',$mod).on('change',function(e){
+                getFileData(this.files[0],function(base64){
+                    //console.log(base64);
+                    base64 && setLogo(base64)
+                });
+
+            })
 
 
         }
