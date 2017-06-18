@@ -104,32 +104,24 @@ define(['zepto', './carlogo','oxjs'], function (undef, Carlogo,OXJS) {
                         msg='';
 
                     switch (true){
-                        case ts<100:
-                            num=15.88;
-                            msg='你就是传说中的极速高手'
-                            break
-                        case ts<200:
-                            num=12.88;
-                            msg='我会静静地欣赏你的尾灯'
-                            break
                         case ts<500:
-                            num=12.58;
-                            msg='好吧,我吃土'
+                            num=12.88;
+                            msg='你就是传说中的极速高手'
                             break
                         case ts<1000:
                             num=12.28;
-                            msg='不错哟,速度与基情下次找你了'
+                            msg='太快了,速度与基情下次找你了'
                             break
                         case ts<2000:
-                            num=12.28;
-                            msg='很少人能让你吃土'
+                            num=11.18;
+                            msg='我会静静地欣赏你的尾灯'
                             break
                         case ts<5000:
                             num=9.88;
-                            msg='没事,尾灯也很漂亮'
+                            msg='还有很大提升空间哟'
                             break
                         case ts>=5000:
-                            msg='龟速一点,安全第一吧'
+                            msg='龟速一点,安全第一'
                             num=9.98;
                             break
                     }
