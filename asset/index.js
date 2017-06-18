@@ -1,4 +1,4 @@
-define(['zepto', './carlogo'], function (undef, Carlogo) {
+define(['zepto', './carlogo','oxjs'], function (undef, Carlogo,OXJS) {
 
     var pageIndex = 0,
         totalPage = Carlogo.totalPage,
@@ -221,7 +221,7 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
                     carlogo: img_no
                 };
                 if(img_no=='base64'){
-                    
+
                     settings.base64=$central.children('img')[0].src
                 }
 
@@ -246,7 +246,19 @@ define(['zepto', './carlogo'], function (undef, Carlogo) {
             $('.J_uploadfile',$mod).on('change',function(e){
                 getFileData(this.files[0],function(base64){
                     //console.log(base64);
-                    base64 && setLogo(base64)
+                    if(base64){
+                        if(OXJS.callFunction('wurui/image-rect','render',[
+                                base64,function(base64){
+                                setLogo(base64)
+                            }]
+                            )){
+
+                        }else{
+                            setLogo(base64)
+                        }
+                    }
+
+
                 });
 
             })

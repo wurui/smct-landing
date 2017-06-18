@@ -1,7 +1,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxm="https://www.openxsl.com">
     <xsl:template match="/root" name="wurui.smct-landing">
-        <xsl:param name="actionShopcart">http://www./smct/submitbuild</xsl:param>
+        <xsl:param name="actionShopcart">http://192.168.1.103:8000/smct/submitbuild?redirect_uri=http%3A%2F%2F192.168.1.103%2Fwurui%2Fsmct-shopcart%2Fdemo.xml%3Fbids%3D</xsl:param>
         <xsl:param name="actionWorks">/smct/submitbuild</xsl:param>
+        <xsl:param name="supportUpload"></xsl:param>
         <!-- className 'J_OXMod' required  -->
         <!---
         主要是搞点酷炫效果来吸引用户
@@ -19,11 +20,13 @@
                         <button class="J_reset" data-role="prev" disabled="disabled"></button>
                         换一批
                         <button class="J_reset" data-role="next"></button>
+                        <xsl:if test="$supportUpload">
                         <br/><br/>
                         <label>
                             上传图标
                             <input type="file" class="J_uploadfile" style="display:none;"/>
                         </label>
+                        </xsl:if>
 
                     </div>
                 </div>
