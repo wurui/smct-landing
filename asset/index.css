@@ -7,7 +7,7 @@
   src: url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.eot');
   src: url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.woff') format('woff'), url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.ttf') format('truetype'), url('//at.alicdn.com/t/font_0w3gcy6pjd29be29.svg#iconfont') format('svg');
 }
-@keyframes rolling {
+@-webkit-keyframes rolling {
   0% {
     transform: rotateX(-30deg) rotateY(0deg);
   }
@@ -18,7 +18,7 @@
     transform: rotateX(-30deg) rotateY(360deg);
   }
 }
-@keyframes breath {
+@-webkit-keyframes breath {
   0% {
     opacity: 1;
   }
@@ -29,7 +29,7 @@
     opacity: 1;
   }
 }
-@keyframes shinning {
+@-webkit-keyframes shinning {
   0% {
     border-color: #999 ;
     color: darksalmon;
@@ -50,9 +50,9 @@
   /*
   .downout{
 
-    transition: all .5s;
+    -webkit-transition: all .5s;
     transform: translate(-100%,0);
-    transition-timing-function: ease-out;
+    -webkit-transition-timing-function: ease-out;
 
   }*/
 }
@@ -66,10 +66,10 @@
   top: 0;
   z-index: 1;
   opacity: 0;
-  transition: all .5s;
+  -webkit-transition: all .5s;
 }
-.oxmod-smct-landing .transition {
-  transition: all .5s;
+.oxmod-smct-landing .-webkit-transition {
+  -webkit-transition: all .5s;
 }
 .oxmod-smct-landing .topmask {
   opacity: 0;
@@ -83,7 +83,7 @@
 }
 .oxmod-smct-landing .topmask img {
   margin-top: 140px;
-  transition: all .3s;
+  -webkit-transition: all .3s;
   position: relative;
   z-index: 4;
   border-radius: 5px;
@@ -91,7 +91,7 @@
   max-height: 160px;
 }
 .oxmod-smct-landing .topmask.bgfadeout {
-  transition: all .5s;
+  -webkit-transition: all .5s;
   background: transparent none;
 }
 .oxmod-smct-landing .topmask.bgfadeout h3 {
@@ -102,13 +102,13 @@
   transform: scale(0.3);
 }
 .oxmod-smct-landing .fadeout {
-  transition: all .5s;
+  -webkit-transition: all .5s;
   opacity: 0;
-  transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
 }
 .oxmod-smct-landing .fadein {
-  transition: opacity .5s;
-  transition-timing-function: ease-in;
+  -webkit-transition: opacity .5s;
+  -webkit-transition-timing-function: ease-in;
   opacity: 1;
   z-index: 3;
 }
@@ -145,14 +145,14 @@
   transform: rotateX(-30deg) rotateY(0deg) !important;
 }
 .oxmod-smct-landing .logos.roll {
-  animation-name: rolling;
-  animation-duration: 20s;
-  animation-delay: 0s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  -webkit-animation-name: rolling;
+  -webkit-animation-duration: 20s;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 .oxmod-smct-landing .logos {
-  transition: all 2s;
+  -webkit-transition: all 2s;
   position: absolute;
   width: 100%;
   height: 300px;
@@ -161,6 +161,7 @@
   text-align: center;
 }
 .oxmod-smct-landing .logos img {
+  -webkit-user-select: none;
   margin-top: 120px;
   width: 80px;
   height: 80px;
@@ -171,6 +172,7 @@
   cursor: pointer;
   left: 50%;
   margin-left: -30px;
+  outline: none;
 }
 .oxmod-smct-landing .logos img:active {
   opacity: .8;
@@ -434,7 +436,7 @@
   overflow-x: auto;
   text-align: center;
   height: 70px;
-  transition: all .3s;
+  -webkit-transition: all .3s;
 }
 .oxmod-smct-landing .editor .bt-second,
 .oxmod-smct-landing .editor .bt-main {
@@ -499,7 +501,7 @@
   vertical-align: middle;
   border-radius: 5px;
   transform: scale(0.75);
-  transition: transform .5s;
+  -webkit-transition: transform .5s;
   outline: none;
 }
 .oxmod-smct-landing button[data-role="prev"]:active,
@@ -557,7 +559,7 @@
   text-align: left;
   line-height: 200px;
   transform: rotate(-240deg);
-  transition: transform .5s;
+  -webkit-transition: transform .5s;
 }
 .oxmod-smct-landing .rpm .pointer:before {
   content: ' ';
@@ -587,7 +589,7 @@
 }
 .oxmod-smct-landing .rpm .falling {
   transform: rotate(-240deg) !important;
-  transition: transform 5s;
+  -webkit-transition: transform 5s;
 }
 .oxmod-smct-landing .rpm i {
   position: absolute;
@@ -690,15 +692,15 @@
   transform: scale(1);
 }
 .oxmod-smct-landing .load-end .timer {
-  animation-name: shinning;
-  animation-duration: 1s;
-  animation-delay: 0s;
-  animation-iteration-count: 2;
-  animation-timing-function: linear;
+  -webkit-animation-name: shinning;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-timing-function: linear;
 }
 .oxmod-smct-landing .hongbao {
   color: #fff;
-  transition: all .5s;
+  -webkit-transition: all .5s;
   transform: scale(0);
   opacity: 0;
   position: relative;
