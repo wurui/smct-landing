@@ -58,7 +58,7 @@
                 <h3 class="title">车贴定制</h3>
                 <div class="preview bgcolor-1">
                     <div class="card-header">
-                        <input type="text" value="扫码移车" class="J_text1 maintext" maxLength="6"/>
+                        <input type="text" value="扫码移车" class="J_text1 maintext" maxLength="5"/>
                     </div>
                     <div class="card-body tpl tpl-1">
                         <div class="central J_central"></div>

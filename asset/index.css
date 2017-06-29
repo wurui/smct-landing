@@ -362,12 +362,15 @@
 }
 .oxmod-smct-landing .editor .card-header {
   color: #fff;
-  font-size: 40.96px;
+  font-size: 54.4px;
   letter-spacing: 3.2px;
   height: 76.8px;
   line-height: 76.8px;
   font-family: '黑体', sans-serif;
   font-weight: 700;
+  transform: scale(1, 1.2);
+  text-shadow: 5px -5px 1px #444;
+  overflow: hidden;
 }
 .oxmod-smct-landing .editor .card-body {
   background-color: #fff;
@@ -477,6 +480,10 @@
   color: inherit;
   width: 90%;
   letter-spacing: inherit;
+}
+.oxmod-smct-landing .editor .maintext {
+  text-shadow: 5px -5px 1px #444;
+  opacity: 0.9999;
 }
 .oxmod-smct-landing .bottom {
   margin-top: 300px;

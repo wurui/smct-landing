@@ -431,12 +431,15 @@
 
     .card-header {
       color: #fff;
-      font-size: .64* 64px;
+      font-size: .64* 85px;
       letter-spacing: .64 * 5px;
       height: @rectWidth * .24;
       line-height: @rectWidth * .24;
       font-family: '黑体', sans-serif;
       font-weight: 700;
+      transform: scale(1,1.2);
+      text-shadow: 5px -5px 1px #444;
+      overflow: hidden;
 
     }
     .card-body {
@@ -572,6 +575,10 @@
       color:inherit;
       width:90%;
       letter-spacing: inherit;
+    }
+    .maintext{
+      text-shadow: 5px -5px 1px #444;
+      opacity: 0.9999;
     }
   }
 
