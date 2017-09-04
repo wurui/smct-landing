@@ -1,13 +1,13 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxm="https://www.openxsl.com">
     <xsl:template match="/root" name="wurui.smct-landing">
-        <xsl:param name="actionShopcart">http://192.168.1.103:8000/smct/submitbuild?redirect_uri=http%3A%2F%2F192.168.1.103%2Fwurui%2Fsmct-shopcart%2Fdemo.xml%3Fbids%3D</xsl:param>
+        <xsl:param name="actionShopcart">../smct-shopcart/demo.xml</xsl:param>
         <xsl:param name="actionWorks">/smct/submitbuild</xsl:param>
         <xsl:param name="supportUpload"></xsl:param>
         <!-- className 'J_OXMod' required  -->
         <!---
         主要是搞点酷炫效果来吸引用户
         -->
-        <div class="J_OXMod oxmod-smct-landing" ox-mod="smct-landing">
+        <div class="J_OXMod oxmod-smct-landing" ox-mod="smct-landing" data-uid="{login/uid}">
             <div class="fullscreen J_coolthings fadein">
                 <div class="background">
 
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="buttons">
-                    <form method="post" action="{$actionShopcart}">
+                    <form method="post" class="J_mainform" action="{$actionShopcart}">
                         <button type="submit" class="bt-main">我很满意,提交!</button>
 <!--
                         <button type="submit" onclick="this.form.action='{$actionWorks}'" class="bt-second">保存至我的车贴</button>
