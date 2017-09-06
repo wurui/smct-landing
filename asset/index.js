@@ -32,7 +32,7 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
     return {
         init: function ($mod) {
             var uid = $mod.attr('data-uid');
-            OXJS.useREST('product/e0ee59439b39fcc3/u/'+encodeURIComponent(uid)).setDevHost('http://local.openxsl.com/').get({
+            OXJS.useREST('product/e0ee59439b39fcc3').setDevHost('http://local.openxsl.com/').get({
                 series:'customize'
             },function(r){
                // console.log(r);
