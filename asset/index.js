@@ -214,6 +214,9 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
             });
 
             $('.J_mainform', $mod).on('submit', function (e) {
+                if(!uid){
+                    return OXJS.gotoLogin();
+                }
                 var f = e.target;
 
                 var img_no = $central.attr('data-no');
