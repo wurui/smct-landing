@@ -253,7 +253,7 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
                 var param = [];
                 for (var k in settings) {
                     param.push({
-                        label: k,
+                        key: k,
                         value: settings[k]
                     })
                 }
@@ -261,6 +261,8 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
                     customize:{
                         title: productTitle+'-定制',
                         tid:productId,
+                        uid:OXJS.getUID(),
+                        time:Date.now(),
                         props: param//JSON.stringify(param)
                     }
                 }, function (r) {
