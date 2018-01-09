@@ -1,7 +1,7 @@
 define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
 
     var pageIndex = 0,
-        productId,
+        //productId,
         totalPage = Carlogo.totalPage,
         $logoContainer;
     var render = function () {
@@ -31,13 +31,10 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
 
     return {
         init: function ($mod) {
-            var uid = $mod.attr('data-uid');
-            OXJS.useREST('product').setDevHost('http://dev.openxsl.com/').get({
-                series:'customize'
-            },function(r){
-               // console.log(r);
-                productId=r && r[0] && r[0]._id;
-            });
+            var uid = OXJS.getUID(),
+            productId=$mod.attr('data-product-id'),
+            productTitle=$mod.attr('data-product-title');
+      
 
             var $topmask = $('.J_topmask', $mod);
             var $editor = $('.J_editor', $mod);
@@ -109,6 +106,8 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
                     }, 500)
                 },
                 showHongbao = function () {
+                    return false
+                    /*
                     if (localStorage.getItem('hongbao')) {
                         return false
                     }
@@ -142,6 +141,7 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
                     localStorage.setItem('hongbao', '极速车手#' + num);
                     $('.J_Result', $mod).html(msg + '<br/><big>获得' + num + '元极速车手红包</big><br/><small>该红包用于购买扫码车贴</small>')
                     return true
+                    */
 
                 };
             Carlogo.preload(0, function () {
@@ -213,7 +213,7 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
 
             });
 
-            $('.J_mainform', $mod).on('submit', function (e) {
+            $('.J_submit', $mod).on('click', function (e) {
                 if(!uid){
                     return OXJS.gotoLogin();
                 }
@@ -236,7 +236,7 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
                 /**
                  * REST to product
                  * */
-                var customizeRest = OXJS.useREST('customize').setDevHost('http://dev.openxsl.com/');//md5('saomachetie')
+                //var customizeRest = OXJS.useREST('customize').setDevHost('http://dev.openxsl.cn/');//md5('saomachetie')
 
                 /**
                  * uid: data.uid,
@@ -249,6 +249,7 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
                  tags: data.tags.split(','),
                  param: JSON.parse(data.param),
                  * */
+
                 var param = [];
                 for (var k in settings) {
                     param.push({
@@ -256,14 +257,17 @@ define(['zepto', './carlogo', 'oxjs'], function (undef, Carlogo, OXJS) {
                         value: settings[k]
                     })
                 }
-                customizeRest.post({
-                    title: '扫码车贴-定制版',
-                    tid:productId,
-                    props: JSON.stringify(param)
+                $mod.OXPost({
+                    customize:{
+                        title: productTitle+'-定制',
+                        tid:productId,
+                        props: param//JSON.stringify(param)
+                    }
                 }, function (r) {
                     if(r && r.code==0){
                         //console.log(r)
                         location.href= f.action+'?bids='+ r.message
+                        //
                         //location.href='shopcart?_id='+ r.message
                     }else{
                         OXJS.toast('提交失败!')

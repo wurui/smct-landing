@@ -7,7 +7,9 @@
         <!---
         主要是搞点酷炫效果来吸引用户
         -->
-        <div class="J_OXMod oxmod-smct-landing" ox-mod="smct-landing" data-uid="{login/uid}">
+        <xsl:variable name="product" select="data/product-list/i[1]"/>
+        <div class="J_OXMod oxmod-smct-landing" ox-mod="smct-landing" data-product-id="{$product/id}" data-product-title="{$product/title}">
+
             <div class="fullscreen J_coolthings fadein">
                 <div class="background">
 
@@ -75,8 +77,8 @@
                 </div>
 
                 <div class="buttons">
-                    <form method="post" class="J_mainform" action="{$actionShopcart}">
-                        <button type="submit" class="bt-main">我很满意,提交!</button>
+                    <form method="post" class="J_mainform" onsubmit="return false;" action="{$actionShopcart}">
+                        <button type="button" class="J_submit bt-main">我很满意,提交!</button>
 <!--
                         <button type="submit" onclick="this.form.action='{$actionWorks}'" class="bt-second">保存至我的车贴</button>
                         -->

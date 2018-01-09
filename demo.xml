@@ -14,5 +14,11 @@
         <icon>//oxm1.cc/img/app_default.png</icon>
     </p>
     <data>
+        <product-list>
+            <i>
+                <id>28288282</id>
+                <title>扫码车贴-定制版</title>
+            </i>
+        </product-list>
     </data>
 </root>
